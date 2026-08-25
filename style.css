@@ -1,0 +1,263 @@
+/* --- 全局样式 --- */
+:root {
+    --color-east: #81c784;   /* 东 - 绿 */
+    --color-south: #e57373;  /* 南 - 红 */
+    --color-west: #fff176;   /* 西 - 黄 */
+    --color-north: #ba68c8;  /* 北 - 紫 */
+    --color-dealer-border: #ffd700; /* 庄家边框 - 金黄 */
+    --text-dark: #333;
+    --bg-light: #f0f2f5;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    padding: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+/* --- 头部 --- */
+header {
+    background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+#season-input {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    border-bottom: 2px dashed rgba(255,255,255,0.7);
+    cursor: text;
+    outline: none;
+    padding: 0 5px;
+    margin: 0 2px;
+    font-style: italic;
+}
+
+/* --- 玩家计分板 --- */
+.score-board {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 15px;
+}
+
+.player-card {
+    border-radius: 10px;
+    padding: 12px;
+    position: relative;
+    transition: transform 0.2s;
+    border: 3px solid transparent;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.player-card:hover {
+    transform: translateY(-2px);
+}
+
+/* 玩家颜色区分 */
+.player-card[data-id="1"] { background-color: var(--color-east); }
+.player-card[data-id="2"] { background-color: var(--color-south); }
+.player-card[data-id="3"] { background-color: var(--color-west); }
+.player-card[data-id="4"] { background-color: var(--color-north); }
+
+/* 庄家样式 */
+.player-card.is-dealer {
+    border-color: var(--color-dealer-border);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* 庄家标签 */
+.dealer-tag {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--color-dealer-border);
+    color: #5d4037;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 6px;
+}
+
+.player-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    background: rgba(255,255,255,0.2);
+    padding: 2px 8px;
+    border-radius: 6px;
+    cursor: text;
+    outline: none;
+    border: 1px dashed transparent;
+    min-width: 60px;
+    text-align: center;
+}
+
+.player-name:focus {
+    border-color: rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.4);
+}
+
+.player-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.15);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.stat-label {
+    opacity: 0.9;
+}
+
+.stat-val {
+    font-weight: bold;
+}
+
+/* --- 按钮区域 --- */
+.player-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: white;
+}
+
+.btn-win { background-color: #28a745; }
+.btn-win:hover { background-color: #218838; }
+
+.btn-mingang { background-color: #17a2b8; }
+.btn-mingang:hover { background-color: #117a8b; }
+
+.btn-angang { background-color: #dc3545; }
+.btn-angang:hover { background-color: #bd2130; }
+
+/* --- 统计面板 --- */
+.stats-panel {
+    padding: 15px;
+    background-color: #fafafa;
+    border-top: 1px solid #eee;
+}
+
+.stats-panel h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-left: 4px solid #007bff;
+}
+
+.label {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.value {
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+}
+
+/* --- 底部控制 --- */
+.controls {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.btn-reset {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    transition: background-color 0.2s;
+}
+
+.btn-reset:hover {
+    background-color: #545b62;
+}
+
+/* --- 响应式优化 --- */
+@media (min-width: 500px) {
+    .score-board {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stat-item:nth-child(5) {
+        grid-column: span 2;
+    }
+}
