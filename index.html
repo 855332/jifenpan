@@ -3,44 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>天下第一麻将大赛S1赛季</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#43cea2">
+    <title>天下第一麻将大赛S01赛季</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/svg+xml" href="./icon.svg">
+    <link rel="apple-touch-icon" href="./icon.svg">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 id="page-title">天下第一麻将大赛<span id="season-input" contenteditable="true">S1</span>赛季</h1>
-        </header>
+<div class="container">
+    <header>
+        <h1>天下第一麻将大赛<span id="season-input" contenteditable="true">S01</span>赛季</h1>
+    </header>
+    <main>
+        <div class="score-board" id="score-board"></div>
 
-        <main>
-            <!-- 玩家计分区域 -->
-            <div class="score-board" id="score-board">
-                <!-- 由 JS 动态生成 -->
+        <div class="stats-panel">
+            <h2>📊 总体数据统计</h2>
+            <div class="stats-grid">
+                <div class="stat-item"><span>总局数：</span><strong id="total-games">0</strong></div>
+                <div class="stat-item"><span>圈数：</span><strong id="round-count">1/4</strong></div>
+                <div class="stat-item"><span>锅数：</span><strong id="pot-count">1</strong></div>
+                <div class="stat-item"><span>当前庄家：</span><strong id="current-dealer">东</strong></div>
+                <div class="stat-item"><span>最大连庄：</span><strong id="max-dealer">无</strong></div>
+                <div class="stat-item"><span>最高连胜：</span><strong id="max-win">无</strong></div>
+                <div class="stat-item"><span>最高连败：</span><strong id="max-lose">无</strong></div>
             </div>
+        </div>
 
-            <!-- 统计区域 -->
-            <div class="stats-panel">
-                <h2>📊 总体数据统计</h2>
-                <div class="stats-grid">
-                    <div class="stat-item"><span class="label">总局数：</span><span id="total-games" class="value">0</span></div>
-                    <div class="stat-item"><span class="label">当前圈数：</span><span id="round-count" class="value">1</span></div>
-                    <div class="stat-item"><span class="label">当前锅数：</span><span id="pot-count" class="value">1</span></div>
-                    
-                    <div class="stat-item"><span class="label">当前庄家：</span><span id="current-dealer" class="value">东 (未设置)</span></div>
-                    
-                    <div class="stat-item"><span class="label">最大连庄：</span><span id="max-dealer" class="value">无</span></div>
-                    <div class="stat-item"><span class="label">最高连胜：</span><span id="max-win" class="value">无</span></div>
-                    <div class="stat-item"><span class="label">最高连败：</span><span id="max-lose" class="value">无</span></div>
-                </div>
-            </div>
-
-            <!-- 控制按钮 -->
-            <div class="controls">
-                <button id="reset-btn" class="btn-reset">🔄 重置所有数据</button>
-            </div>
-        </main>
-    </div>
-
-    <script src="app.js"></script>
+        <div class="controls">
+            <button id="reset-btn" class="btn-reset">🔄 重置所有数据</button>
+        </div>
+    </main>
+</div>
+<script src="./app.js"></script>
 </body>
 </html>
